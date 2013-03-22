@@ -1,2 +1,4 @@
-Forking to use temporarily until jQuery 1.9 menu is released
-
+A fork of the fg-menu to
+ - move css into scss
+ - provide a bootstrap theme (compatibiliy to bootstrap)
+ - cleanup libs and folders
