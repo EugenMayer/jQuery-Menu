@@ -1,0 +1,80 @@
+.fg-button {
+  @extend .btn;
+  .ui-icon {
+    @extend .icon-caret-down;
+  }
+}
+
+.fg-menu-container, .fg-menu-container ul.fg-menu ul {
+  min-width: 200px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  // override default ul
+  list-style: none;
+  background-color: $dropdownBackground;
+  border: 1px solid #ccc;
+  // Fallback for IE7-8
+  border: 1px solid $dropdownBorder;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  @include border-radius(6px);
+  @include box-shadow(0 5px 10px rgba(0, 0, 0, .2));
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+
+}
+
+.fg-menu-container {
+  // The dropdown menu (ul)
+  // ----------------------
+  .fg-menu {
+
+
+    // Links within the dropdown menu
+
+    li {
+      > a {
+        .ui-icon {
+          @extend .icon-caret-right;
+        }
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        line-height: $baseLineHeight;
+        color: $dropdownLinkColor;
+        white-space: nowrap;
+      }
+      li a {
+        white-space:normal;
+      }
+    }
+
+    // Hover/Focus state
+    // -----------
+    li > a:hover,
+    li > a:focus,
+      /*.dropdown-submenu:hover > a,
+      .dropdown-submenu:focus > a */
+      {
+      width: 100%;
+      overflow: hidden;
+      text-decoration: none;
+      color: $dropdownLinkColorHover;
+      @include gradient-vertical($dropdownLinkBackgroundHover, darken($dropdownLinkBackgroundHover, 5%));
+    }
+
+    li > a.ui-state-default,
+    li > a.ui-state-hover:hover,
+    li > a.ui-state-default:focus {
+      width: 100%;
+      color: $dropdownLinkColorActive;
+      text-decoration: none;
+      outline: 0;
+      @include gradient-vertical($dropdownLinkBackgroundActive, darken($dropdownLinkBackgroundActive, 5%));
+    }
+  }
+}
