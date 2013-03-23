@@ -5,7 +5,17 @@
   }
 }
 
-.fg-menu-container, .fg-menu-container ul.fg-menu ul {
+.navbar .nav > li > a.ui-state-active {
+  border: 0px solid transparent;
+  background: none;
+  color: #000000;
+}
+
+.fg-menu-container ul.fg-menu ul {
+  @extend .fg-menu-container;
+}
+
+.fg-menu-container {
   min-width: 200px;
   padding: 5px 0;
   margin: 2px 0 0;
@@ -22,37 +32,38 @@
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-
-}
-
-.fg-menu-container {
   // The dropdown menu (ul)
   // ----------------------
   .fg-menu {
-
-
     // Links within the dropdown menu
-
     li {
       > a {
         .ui-icon {
           @extend .icon-caret-right;
         }
+        width: 100%;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
         display: block;
         padding: 3px 20px;
+        padding-left: 15px;
         clear: both;
         font-weight: normal;
         line-height: $baseLineHeight;
         color: $dropdownLinkColor;
         white-space: nowrap;
+
       }
       li a {
-        white-space:normal;
+        white-space: normal;
       }
     }
 
+    li.fg-submenu{
+      > a {
+        padding: 3px 20px;
+      }
+    }
     // Hover/Focus state
     // -----------
     li > a:hover,

@@ -2,3 +2,12 @@ A fork of the fg-menu to
  - move css into scss
  - provide a bootstrap theme (compatibiliy to bootstrap)
  - cleanup libs and folders
+
+
+Sass
+You basicaly want to use
+
+ @import "fg.basics";
+ @import "fg.bootstrap";
+
+in a project were you have the bootstrap scss files inlcluded, see fg.boostrap.scss as an example (which already includes the bootstrap.scss libs)
