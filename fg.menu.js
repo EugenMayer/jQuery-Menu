@@ -549,11 +549,22 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 function sortBigToSmall(a, b) { return b - a; };
 
 jQuery.fn.getTotalWidth = function(){
-	return $(this).width() + parseInt($(this).css('paddingRight')) + parseInt($(this).css('paddingLeft')) + parseInt($(this).css('borderRightWidth')) + parseInt($(this).css('borderLeftWidth'));
+	var width = $(this).width();
+  var paddingRight = +parseInt($(this).css('paddingRight')) || 0;
+  var paddingLeft = +parseInt($(this).css('paddingLeft')) || 0;
+  var borderRightWidth = +parseInt($(this).css('borderRightWidth')) || 0;
+  var borderLeftWidth = +parseInt($(this).css('borderLeftWidth')) || 0;
+
+  return width + paddingLeft + paddingRight + borderRightWidth + borderLeftWidth;
 };
 
 jQuery.fn.getTotalHeight = function(){
-	return $(this).height() + parseInt($(this).css('paddingTop')) + parseInt($(this).css('paddingBottom')) + parseInt($(this).css('borderTopWidth')) + parseInt($(this).css('borderBottomWidth'));
+	var height = $(this).height();
+  var paddingTop = +parseInt($(this).css('paddingTop')) || 0;
+  var paddingBottom = +parseInt($(this).css('paddingBottom')) || 0;
+  var borderTopWidth = +parseInt($(this).css('borderTopWidth')) || 0;
+  var borderBottomWidth = +parseInt($(this).css('borderBottomWidth')) || 0;
+  return height +  paddingTop + paddingBottom + borderTopWidth + borderBottomWidth;
 };
 
 function getScrollTop(){
