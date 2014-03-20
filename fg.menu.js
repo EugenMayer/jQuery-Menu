@@ -510,7 +510,7 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	} 
 	else {
 		el.css({ bottom: 'auto', top: yVal });
-		if (options.positionOpts.detectV && !fitVertical(el)) {
+		if (options.positionOpts.detectV && !fitVerticalDown(el) && fitVerticalUp(el)) {
 			el.css({ top: 'auto', bottom: yVal });
 		}
 	};
@@ -599,6 +599,17 @@ function fitVertical(el, topOffset){
 	var topVal = parseInt(topOffset) || $(el).offset().top;
 	return (topVal + $(el).height() <= getWindowHeight() + getScrollTop() && topVal - getScrollTop() >= 0);
 };
+
+function fitVerticalDown(el, topOffset){
+	var topVal = parseInt(topOffset) || $(el).offset().top;
+	return (topVal + $(el).height() <= getWindowHeight() + getScrollTop() && topVal - getScrollTop() >= 0);
+};
+
+function fitVerticalUp(el, topOffset){
+	var topVal = parseInt(topOffset) || $(el).offset().top;
+	return (topVal - $(el).height() >= 0);
+};
+
 
 /*-------------------------------------------------------------------- 
  * javascript method: "pxToEm"
