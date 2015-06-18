@@ -107,8 +107,11 @@ function Menu(caller, options){
 			.addClass('fg-menu-open')
 			.addClass(options.callerOnState);
 		container.parent().show().click(function(){ menu.kill(); return false; });
+		container.css('top',0);
+		menu.setPosition(container, caller, options);
 		container.hide().slideDown(options.showSpeed).find('.fg-menu:eq(0)');
 		menu.menuOpen = true;
+
 		caller.removeClass(options.loadingState);
 		$(document).click(killAllMenus);
 		
@@ -472,10 +475,15 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	};	
 	var options = options;
 	var xVal, yVal;
-	
-	var helper = $('<div class="positionHelper"></div>');
-	helper.css({ position: 'absolute', left: dims.refX, top: dims.refY, width: dims.refW, height: dims.refH });
-	el.wrap(helper);
+
+	if($(el).closest('div.positionHelper').length) {
+		$(el).closest('div.positionHelper').css({ position: 'absolute', left: dims.refX, top: dims.refY, width: dims.refW, height: dims.refH })
+	}
+	else {
+		var helper = $('<div class="positionHelper"></div>');
+		helper.css({ position: 'absolute', left: dims.refX, top: dims.refY, width: dims.refW, height: dims.refH });
+		el.wrap(helper);
+	}
 	
 	// get X pos
 	switch(options.positionOpts.posX) {
